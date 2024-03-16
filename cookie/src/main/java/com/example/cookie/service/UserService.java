@@ -28,6 +28,8 @@ public class UserService {
             Cookie cookie = new Cookie("authorization-cookie", userDto.getId());
             cookie.setDomain("localhost");  //해당 도메인에서만 쿠키 사용 가능
             cookie.setPath("/");
+            cookie.setHttpOnly(true);   //자바스크립트에서 해당 값을 읽을 수 없도록 보안 처리
+            cookie.setSecure(true); // << https에서만 사용되도록 설정
             cookie.setMaxAge(-1); // 시간 지정 가능, session과 동일하게 연결된 동안만 사용한다는 의미
 
             response.addCookie(cookie);
